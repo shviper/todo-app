@@ -1,0 +1,121 @@
+* {
+  padding: 0;
+  margin: 0;
+  box-sizing: border-box;
+}
+body {
+  margin: 30px;
+  overflow-x: hidden;
+  background: #1c2e4a;
+  height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.container {
+  margin: 0 auto;
+  position: relative;
+  max-width: 70%;
+  background: #00b1b3;
+  border-radius: 10px;
+  padding: 20px;
+  box-shadow: -6px 13px 19px 6px hsl(180deg 36% 70% / 18%),
+    9px 8px 18px 2px #294470;
+  display: grid;
+}
+.listItem {
+  width: 100%;
+}
+.title {
+  position: relative;
+  width: 100%;
+  background: #667292;
+  border-radius: 8px 8px 0 0;
+  border-bottom: 3px solid white;
+  padding: 5px;
+}
+.title h1 {
+  color: #ffff;
+  text-transform: uppercase;
+  font-family: "Courier New", Courier, monospace;
+  padding: 20px;
+  text-align: center;
+}
+.note,
+.selectall {
+  width: 98%;
+  background: #282a35;
+  float: left;
+  box-shadow: -6px 13px 19px 6px hsl(180deg 36% 70% / 18%),
+    9px 8px 18px 2px #294470;
+  margin: 3px;
+  color: #ffc0c7;
+  padding: 10px;
+  font-size: 18px;
+  border-bottom: 2px solid #8d54545c;
+  text-align: justify;
+  text-transform: capitalize;
+  font-family: "Courier New", Courier, monospace;
+}
+.selectall {
+  display: none;
+}
+label {
+  margin-left: 10px;
+}
+input[type="text"] {
+  position: relative;
+  box-sizing: border-box;
+  width: 100%;
+  padding: 12px 20px;
+  border: 1px solid rgb(41, 153, 228);
+  height: 40px;
+  border-radius: 5px;
+  margin-top: 5px;
+  font-family: "Courier New", Courier, monospace;
+  font-size: 16px;
+  text-transform: capitalize;
+  font-weight: bolder;
+  box-shadow: 3px -1px 9px 12px hsl(180deg 36% 70% / 18%),
+    -3px 5px 13px 0px #294470;
+}
+input::placeholder {
+  font-family: "Courier New", Courier, monospace;
+  font-size: 16px;
+  text-transform: capitalize;
+  font-weight: bolder;
+}
+input[type="submit"] {
+  width: 49%;
+  height: 40px;
+  box-shadow: none;
+  padding: 10px;
+  margin-top: 10px;
+  font-weight: bolder;
+  /* font-size: 20px; */
+  text-transform: uppercase;
+  background: #0072b5;
+  border: none;
+  border-radius: 5px;
+  color: white;
+  cursor: pointer;
+  border: 1px solid white;
+}
+input[type="submit"]:hover {
+  opacity: 0.9;
+}
+#button2 {
+  background: #1c2e4a;
+  color: #e76c00;
+}
+.fotter {
+  position: fixed;
+  width: 50%;
+  bottom: 10px;
+  text-align: center;
+  text-transform: uppercase;
+  font-family: monospace;
+}
+.fotter a {
+  text-decoration: none;
+}

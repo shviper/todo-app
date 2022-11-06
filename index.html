@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>todo app</title>
+    <link rel="stylesheet" href="./style/main.css" />
+  </head>
+  <body onload="showHide()">
+    <div class="container">
+      <div class="title">
+        <h1>TODO App</h1>
+        <div class="selectall">
+          <input
+            type="checkbox"
+            class="remove2"
+            id="selectall"
+            onclick="selectItem()"
+          />
+          <label class="stext">select all</label>
+        </div>
+      </div>
+      <div class="note">
+        <input type="checkbox" class="remove" />
+        <label for="note">todo list one</label>
+      </div>
+      <div class="input">
+        <input
+          type="text"
+          placeholder="Enter your list "
+          id="list"
+          onkeydown="enterAdd(event)"
+          spellcheck="off"
+          autocomplete="off"
+        />
+      </div>
+      <div class="action">
+        <input type="submit" id="button" onclick="addTodoList()" value="add" />
+        <input
+          type="submit"
+          id="button2"
+          onclick="removeTodoList()"
+          value="delete"
+        />
+      </div>
+    </div>
+    <div class="fotter">
+      <h4>
+        author
+        <a target="_blank" href="https://www.facebook.com/shviper"> sh riyad</a>
+      </h4>
+    </div>
+    <script src="./script/app.js"></script>
+  </body>
+</html>
