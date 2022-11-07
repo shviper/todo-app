@@ -7,7 +7,7 @@
     <title>todo app</title>
     <link rel="stylesheet" href="./style/main.css" />
   </head>
-  <body onload="showHide()">
+  <body contextmenu="off">
     <div class="container">
       <div class="title">
         <h1>TODO App</h1>
@@ -21,36 +21,33 @@
           <label class="stext">select all</label>
         </div>
       </div>
-      <div class="note">
+      <!-- <div class="note">
         <input type="checkbox" class="remove" />
         <label for="note">todo list one</label>
-      </div>
+      </div> -->
       <div class="input">
         <input
           type="text"
           placeholder="Enter your list "
           id="list"
-          onkeydown="enterAdd(event)"
           spellcheck="off"
           autocomplete="off"
         />
       </div>
       <div class="action">
-        <input type="submit" id="button" onclick="addTodoList()" value="add" />
+        <input type="submit" id="button" onclick="addTodo()" value="add" />
         <input
           type="submit"
           id="button2"
-          onclick="removeTodoList()"
+          onclick="removeTodo()"
           value="delete"
         />
       </div>
     </div>
-    <div class="fotter">
-      <h4>
-        author
-        <a target="_blank" href="https://www.facebook.com/shviper"> sh riyad</a>
-      </h4>
-    </div>
+    <h5>
+      author
+      <a target="_blank" href="https://www.facebook.com/shviper"> sh riyad</a>
+    </h5>
     <script src="./script/app.js"></script>
   </body>
 </html>

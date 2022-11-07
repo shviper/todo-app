@@ -1,80 +1,94 @@
 const select = document.querySelector(".selectall");
-// todo list add functionality
-function addTodoList() {
-  // varial section
-  const list = document.getElementById("list");
-  if (list.value == "") {
-    alert("please insert list");
-  } else {
-    //   create div ,input and label element
+const list = document.getElementById("list");
+const allTodo = document.querySelectorAll(".remove");
+const todo = document.querySelectorAll(".note");
+const todos = JSON.parse(localStorage.getItem("todos"));
+
+if (todos) {
+  todos.forEach((todo) => addTodo(todo));
+}
+list.addEventListener("keypress", (e) => {
+  if (e.key == "Enter") {
+    addTodo();
+  }
+});
+function addTodo(todo) {
+  let todoText = list.value;
+  if (todo) {
+    todoText = todo.text;
+  }
+  if (todoText && todoText.length < 50 && todoText != "") {
     const div = document.createElement("div");
     const input = document.createElement("input");
     const label = document.createElement("label");
-    //   crate label text
-    const labelText = document.createTextNode(` ${list.value}`);
+    const labelText = document.createTextNode(`${todoText}`);
+    div.classList.toggle("note");
+    label.classList.add("label");
     label.appendChild(labelText);
-    // create div class attribute
-    div.setAttribute("class", "note");
-    //   create input checkbox attribute
+    div.setAttribute("onclick", "complete(this)");
     input.setAttribute("type", "checkbox");
     input.setAttribute("onclick", "showHide()");
-    input.setAttribute("class", "remove");
-    // append input element in div
+    input.classList.toggle("remove");
     div.appendChild(input);
-    // append label element in div
     div.appendChild(label);
-    // insert input element before in note div
     const inbe = document.querySelector(".input");
     document.querySelector(".container").insertBefore(div, inbe);
-    // clear input fleid
     list.value = "";
     showHide();
+    updateTodeList();
+  } else {
+    alert("pleace insert valid list and smaller then 50 latter");
   }
 }
-// todo list remove functionality
-function removeTodoList() {
-  // select all element
-  const selectElement = document.querySelectorAll(".remove");
-  for (let i = 0; i < selectElement.length; i++) {
-    // if todo list selected ,so delete this
-    if (selectElement[i].checked) {
-      selectElement[i].parentNode.remove();
+function updateTodeList() {
+  const todos = [];
+  let label = document.querySelectorAll(".label");
+  label.forEach((label) => {
+    todos.push({
+      text: label.innerText,
+    });
+  });
+  localStorage.setItem("todos", JSON.stringify(todos));
+}
+function removeTodo() {
+  const allTodo = document.querySelectorAll(".remove");
+  for (let i = 0; i < allTodo.length; i++) {
+    if (allTodo[i].checked) {
+      allTodo[i].parentNode.remove();
+      updateTodeList();
     }
   }
-  // hide all select or de select option
   select.style.display = "none";
 }
-// enter kay pass to add todo items
-function enterAdd(event) {
-  var key = event.keyCode;
-  if (key == 13) {
-    addTodoList();
-  }
-}
-// select todo item function
+const complete = (element) => {
+  let item = element.childNodes[1];
+  item.style.textDecoration = "line-through";
+  item.style.color = "d95e5e";
+  item.style.fontFamily = "impact";
+  element.style.borderBottom = "3px solid #d95e5e";
+  element.style.background = "black";
+  console.log(element.childNodes[1].innerText);
+};
 function selectItem() {
-  // select essention element
-  const selectElement = document.querySelectorAll(".remove");
-  const select = document.querySelector("#selectall");
+  const allTodo = document.querySelectorAll(".remove");
+  const selectBtn = document.querySelector("#selectall");
   const stext = document.querySelector(".stext");
-  // if click all select option ,then select all
-  if (select.checked) {
-    for (let i = 0; i < selectElement.length; i++) {
-      selectElement[i].checked = true;
-    }
+  if (selectBtn.checked) {
+    allTodo.forEach((todoItem) => {
+      todoItem.checked = true;
+    });
     stext.innerHTML = `Deselect all`;
   } else {
-    for (let i = 0; i < selectElement.length; i++) {
-      selectElement[i].checked = false;
-    }
+    allTodo.forEach((todoItem) => {
+      todoItem.checked = false;
+    });
     stext.innerHTML = `select all`;
   }
 }
-// show and hide todo option
 function showHide() {
-  const selectElement = document.querySelectorAll(".remove");
-  for (let i = 0; i < selectElement.length; i++) {
-    if (selectElement[i].checked) {
+  const allTodo = document.querySelectorAll(".remove");
+  for (let i = 0; i < allTodo.length; i++) {
+    if (allTodo[i].checked) {
       select.style.display = "block";
       break;
     } else {
